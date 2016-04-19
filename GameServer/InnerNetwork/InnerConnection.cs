@@ -47,7 +47,7 @@ namespace GameServer.InnerNetwork
             if (ScsClient != null)
                 ScsClient.Disconnect();
 
-            ScsClient = ScsServiceClientBuilder.CreateClient<IInnerService>(new ScsTcpEndPoint("127.0.0.1", 23232), Client);
+            ScsClient = ScsServiceClientBuilder.CreateClient<IInnerService>(new ScsTcpEndPoint("127.0.0.1", 7474), Client);
 
             ScsClient.Timeout = 1000;
             ScsClient.ConnectTimeout = 2000;

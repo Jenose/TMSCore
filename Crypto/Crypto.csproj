@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{39B21EBA-3923-4E94-82CA-747801746B6A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B978D085-84B4-48E7-B143-DAE7DED26431}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoginServer</RootNamespace>
-    <AssemblyName>LoginServer</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>Crypto</RootNamespace>
+    <AssemblyName>Crypto</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,44 +36,13 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Network\InnerNetwork\InnerClient.cs" />
-    <Compile Include="Network\InnerNetwork\InnerService.cs" />
-    <Compile Include="LoginServer.cs" />
-    <Compile Include="Network\OuterNetwork\ARecvPacket.cs" />
-    <Compile Include="Network\OuterNetwork\ASendPacket.cs" />
-    <Compile Include="Network\OuterNetwork\NetworkListener.cs" />
-    <Compile Include="Network\OuterNetwork\NetworkMessage.cs" />
-    <Compile Include="Network\OuterNetwork\NetworkOpcode.cs" />
-    <Compile Include="Network\OuterNetwork\NetworkProtocol.cs" />
-    <Compile Include="Network\OuterNetwork\NetworkSession.cs" />
-    <Compile Include="Network\Packets\Ins\REQ_RSAKEY.cs" />
-    <Compile Include="Network\Packets\Outs\RES_RSAKEY.cs" />
+    <Compile Include="AESCrypt.cs" />
+    <Compile Include="CryptoConstants.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Database\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Crypto\Crypto.csproj">
-      <Project>{b978d085-84b4-48e7-b143-dae7ded26431}</Project>
-      <Name>Crypto</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InnerLib\InnerLib.csproj">
-      <Project>{3934d3a5-e9d9-4987-9542-a6eaf3b2e156}</Project>
-      <Name>InnerLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Scs\src\Scs\Scs.csproj">
-      <Project>{0dc81b09-3abf-4bb3-8c08-4e8ee4432bdc}</Project>
-      <Name>Scs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMSCore\TMSCore.csproj">
-      <Project>{4a0eeddc-b97d-4442-9793-405e205f3704}</Project>
-      <Name>TMSCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

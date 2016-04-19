@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMSCore", "TMSCore\TMSCore.csproj", "{4A0EEDDC-B97D-4442-9793-405E205F3704}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scs", "Scs\src\Scs\Scs.csproj", "{0DC81B09-3ABF-4BB3-8C08-4E8EE4432BDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnerLib", "InnerLib\InnerLib.csproj", "{3934D3A5-E9D9-4987-9542-A6EAF3B2E156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto", "Crypto\Crypto.csproj", "{B978D085-84B4-48E7-B143-DAE7DED26431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,18 @@ Global
 		{3934D3A5-E9D9-4987-9542-A6EAF3B2E156}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3934D3A5-E9D9-4987-9542-A6EAF3B2E156}.Release|x86.ActiveCfg = Release|Any CPU
 		{3934D3A5-E9D9-4987-9542-A6EAF3B2E156}.Release|x86.Build.0 = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Debug|x86.Build.0 = Debug|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|x86.ActiveCfg = Release|Any CPU
+		{B978D085-84B4-48E7-B143-DAE7DED26431}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +111,6 @@ Global
 		{0BE29F06-F1A0-4EC0-B705-0D2A08D2AF97} = {BC85CA97-6863-432F-A01D-203773284C2D}
 		{0DC81B09-3ABF-4BB3-8C08-4E8EE4432BDC} = {2EFEEA90-B1B5-4DE4-85B6-3CCA2F5340A6}
 		{3934D3A5-E9D9-4987-9542-A6EAF3B2E156} = {2EFEEA90-B1B5-4DE4-85B6-3CCA2F5340A6}
+		{B978D085-84B4-48E7-B143-DAE7DED26431} = {2EFEEA90-B1B5-4DE4-85B6-3CCA2F5340A6}
 	EndGlobalSection
 EndGlobal
