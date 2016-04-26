@@ -127,6 +127,22 @@ namespace LoginServer.OuterNetwork
             return result;
         }
 
+        protected String ReadS()
+        {
+            Encoding encoding = Encoding.UTF8;
+            String result = String.Empty;
+            try
+            {
+                int len = ReadH();
+                result = encoding.GetString(ReadB(len));
+            }
+            catch (Exception)
+            {
+                Log.Warn("Missing S for: {0}", GetType());
+            }
+            return result;
+        }
+
         protected byte[] ReadB(int length)
         {
             byte[] result = new byte[length];

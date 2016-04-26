@@ -197,7 +197,7 @@ namespace LoginServer.OuterNetwork
                 //GlobalLogic.PacketReceived(Account, OpCodes.Recv[message.OpCode], Buffer);
                 Console.WriteLine("-------------------------------------------------------------------");
                 Log.Debug("Recieve {0}: Buffer({1})", NetworkOpcode.Recv[message.OpCode].Name, Buffer.Length);
-                Log.Debug("Data:\n{0}", Buffer.FormatHex());
+                Log.Debug("Data:{0}{1}", Environment.NewLine, Buffer.FormatHex());
                 Console.WriteLine("-------------------------------------------------------------------");
 
                 ((ARecvPacket)Activator.CreateInstance(NetworkOpcode.Recv[message.OpCode])).Process(this);
@@ -214,7 +214,7 @@ namespace LoginServer.OuterNetwork
                                  message.OpCode,
                                  Buffer.Length);
 
-                Log.Debug("Data:\n{0}", Buffer.FormatHex());
+                Log.Debug("Data:\r\n{0}", Buffer.FormatHex());
                 Console.WriteLine("-------------------------------------------------------------------");
             }
         }

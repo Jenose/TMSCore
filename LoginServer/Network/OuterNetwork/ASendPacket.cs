@@ -31,9 +31,9 @@ namespace LoginServer.OuterNetwork
                 Send(states[i]);
         }
 
-        public void Send(ISession state)
+        public void Send(ISession session)
         {
-            if (state == null || !state.IsValid)
+            if (session == null || !session.IsValid)
                 return;
 
             if (!NetworkOpcode.Send.ContainsKey(GetType()))
@@ -58,13 +58,18 @@ namespace LoginServer.OuterNetwork
                                 Write(writer);
                             }
 
-                            Data = stream.ToArray();
-                            BitConverter.GetBytes((short)(Data.Length - 4)).CopyTo(Data, 0);
+                            byte[] cryptData = stream.ToArray();
+                            byte[] header = (session as NetworkSession).m_ServerCrypt.getHeaderToClient(cryptData.Length);
 
                             Console.WriteLine("-------------------------------------------------------------------");
-                            Log.Debug("SEND {0}: Buffer({1})", GetType().Name, Data.Length);
-                            Log.Debug("Data:\n{0}", Data.FormatHex());
+                            Log.Debug("SEND {0}: Buffer({1})", GetType().Name, cryptData.Length);
+                            Log.Debug("Data:\n{0}", cryptData.FormatHex());
                             Console.WriteLine("-------------------------------------------------------------------");
+
+                            (session as NetworkSession).m_ServerCrypt.Encrypt(cryptData);
+                            Data = new byte[cryptData.Length + 4];
+                            Buffer.BlockCopy(header, 0, Data, 0, 4);
+                            Buffer.BlockCopy(cryptData, 0, Data, 4, cryptData.Length);
                         }
                     }
                     catch (Exception ex)
@@ -76,7 +81,7 @@ namespace LoginServer.OuterNetwork
                 }
             }
 
-            state.PushPacket(Data);
+            session.PushPacket(Data);
         }
 
         public abstract void Write(BinaryWriter writer);
@@ -91,9 +96,19 @@ namespace LoginServer.OuterNetwork
             writer.Write(val);
         }
 
+        protected void WriteH(BinaryWriter writer, int val)
+        {
+            writer.Write((short)val);
+        }
+
         protected void WriteC(BinaryWriter writer, byte val)
         {
             writer.Write(val);
+        }
+
+        protected void WriteC(BinaryWriter writer, int val)
+        {
+            writer.Write((byte)val);
         }
 
         protected void WriteDf(BinaryWriter writer, double val)
@@ -114,7 +129,9 @@ namespace LoginServer.OuterNetwork
         protected void WriteS(BinaryWriter writer, String text)
         {
             Encoding encoding = Encoding.UTF8;
-            writer.Write(encoding.GetBytes(text));
+            byte[] data = encoding.GetBytes(text);
+            writer.Write((short)data.Length);
+            writer.Write(data);
         }
 
         protected void WriteB(BinaryWriter writer, string hex)

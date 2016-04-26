@@ -33,6 +33,7 @@ namespace LoginServer.OuterNetwork
         public IEnumerable<IScsMessage> CreateMessages(byte[] receivedBytes)
         {
             //Log.Debug("RAW DECRYPT: {0}{1}", Environment.NewLine, receivedBytes.FormatHex());
+
             byte[] data = new byte[receivedBytes.Length - 4];
             Buffer.BlockCopy(receivedBytes, 4, data, 0, data.Length);
             Session.m_ClientCrypt.Decrypt(data);
